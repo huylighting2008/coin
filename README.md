@@ -1,30 +1,25 @@
-import json
-import urllib.request
-import urllib.error
-
-webhook_url = "https://discord.com/api/webhooks/1376425995099181208/laTTIQaY4yGaQOaNk8O4wJBs1emYVKQh4DNZ4jYBJxir4emmKUbIJqtX0_jxGsk3F5cW"  # ← Thay đúng URL mới
-
-data = {
-    "content": "✅ Webhook hoạt động rồi nè!"
+{
+  "type": 2,
+  "id": "752831914402115456",
+  "name": "Guildy name",
+  "avatar": "bb71f469c158984e265093a81b3397fb",
+  "channel_id": "561885260615255432",
+  "guild_id": "56188498421443265",
+  "application_id": null,
+  "source_guild": {
+    "id": "56188498421476534",
+    "name": "Guildy name",
+    "icon": "bb71f469c158984e265093a81b3397fb"
+  },
+  "source_channel": {
+    "id": "5618852344134324",
+    "name": "announcements"
+  },
+  "user": {
+    "username": "test",
+    "discriminator": "7479",
+    "id": "190320984123768832",
+    "avatar": "b004ec1740a63ca06ae2e14c5cee11f3",
+    "public_flags": 131328
+  }
 }
-
-headers = {
-    "Content-Type": "application/json"
-}
-
-req = urllib.request.Request(
-    url=webhook_url,
-    data=json.dumps(data).encode('utf-8'),
-    headers=headers,
-    method='POST'
-)
-
-try:
-    with urllib.request.urlopen(req) as response:
-        print("✅ Thành công! Mã phản hồi:", response.status)
-except urllib.error.HTTPError as e:
-    print("❌ HTTP Error:", e.code, e.reason)
-    print("📩 Phản hồi từ Discord:", e.read().decode())
-except urllib.error.URLError as e:
-    print("❌ URL Error:", e.reason)
-
